@@ -1,4 +1,13 @@
 __pycache__/
-db.sqlite3
+*.py[cod]
+*.pyo
+*.so
+
 .env
+*.env
 .idea
+
+*.log
+db.sqlite3
+media/
+staticfiles/
