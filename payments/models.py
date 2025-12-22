@@ -19,8 +19,11 @@ class Item(models.Model):
     currency = models.CharField(
         max_length=3,
         choices=CURRENCY_CHOICES,
-        default=CURRENCY_USD,
+        default=CURRENCY_EUR,
     )
+
+    def display_price(self) -> str:
+        return f"{self.price / 100:.2f}"  # type: ignore
 
     def __str__(self) -> str:
         return self.name  # type: ignore
