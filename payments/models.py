@@ -2,12 +2,6 @@ from django.db import models
 
 
 class Item(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    price = models.PositiveIntegerField(
-        help_text="Price in smallest currency unit (e.g. 100 cents for USD)"
-    )
-
     CURRENCY_USD = "usd"
     CURRENCY_EUR = "eur"
 
@@ -16,6 +10,11 @@ class Item(models.Model):
         (CURRENCY_EUR, "EUR"),
     ]
 
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    price = models.PositiveIntegerField(
+        help_text="Price in smallest currency unit (e.g. 100 cents for USD)"
+    )
     currency = models.CharField(
         max_length=3,
         choices=CURRENCY_CHOICES,
@@ -23,7 +22,7 @@ class Item(models.Model):
     )
 
     def display_price(self) -> str:
-        return f"{self.price / 100:.2f}"  # type: ignore
+        return f"{self.price / 100:.2f}"
 
     def __str__(self) -> str:
-        return self.name  # type: ignore
+        return self.name
