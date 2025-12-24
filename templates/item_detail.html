@@ -27,13 +27,11 @@
                     stripe.redirectToCheckout({sessionId: data.session_id});
                 })
                 .catch(error => {
+                    buyButton.disabled = false;
+                    buyButton.textContent = "Buy";
                     console.error("Error", error);
                     alert("An error occurred. Please try again.");
                 })
-                .finally(() => {
-                    buyButton.disabled = false;
-                    buyButton.textContent = "Buy";
-                });
         });
     </script>
 </body>
