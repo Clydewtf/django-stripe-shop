@@ -95,7 +95,9 @@ WSGI_APPLICATION = 'stripe_shop.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
+        default=os.getenv('DATABASE_URL'),
+        ssl_require=True,
+        conn_max_age=600,
     )
 }
 
